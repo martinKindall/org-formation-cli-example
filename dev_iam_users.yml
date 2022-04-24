@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09-OC'
+
+Organization: !Include ./organization.yml
+
+DefaultOrganizationBindingRegion: us-east-1
+
+OrganizationBindings:
+
+  IamUsersBinding:
+    Account: !Ref DemoTeamAccount
+
+Resources:
+  someDeveloper:
+    OrganizationBinding: !Ref IamUsersBinding
+    Type: AWS::IAM::User
+    Properties:
+      UserName: some_developer
